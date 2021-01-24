@@ -28,10 +28,10 @@ class ViewPagerAdapter(private val fragmentManager: FragmentManager) :
 
     override fun getPageTitle(position: Int): CharSequence? {
         return when (position) {
-            0 -> "Фкладка 1"
-            1 -> "Фкладка 2"
-            2 -> "Фкладка 3"
-            else -> "Фкладка 1"
+            0 -> "Вкладка 1"
+            1 -> "Вкладка 2"
+            2 -> "Вкладка 3"
+            else -> "Вкладка 1"
         }
     }
 
