@@ -6,11 +6,14 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.api.load
-import kotlinx.android.synthetic.main.fragment_mars.*
+import kotlinx.android.synthetic.main.fragment_3.*
 
-class MarsFragment : Fragment(R.layout.fragment_mars) {
-    private val viewModel: PictureOfSameDayViewModel by lazy {
-        ViewModelProvider(this).get(PictureOfSameDayViewModel::class.java)
+
+class Fragment_3 : Fragment(R.layout.fragment_3) {
+
+
+    private val viewModel: PictureOfSame2DayViewModel by lazy {
+        ViewModelProvider(this).get(PictureOfSame2DayViewModel::class.java)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -29,7 +32,7 @@ class MarsFragment : Fragment(R.layout.fragment_mars) {
                 } else {
                     image_view.load(url) {
                         crossfade(true)
-                        lifecycle(this@MarsFragment)
+                        lifecycle(this@Fragment_3)
                         error(R.drawable.ic_load_error_vector)
                         placeholder(R.drawable.ic_no_photo_vector)
                     }
@@ -50,4 +53,6 @@ class MarsFragment : Fragment(R.layout.fragment_mars) {
             show()
         }
     }
+
+
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint android:id="@+id/widget" />
+        <Constraint
+            android:id="@+id/view_pager"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:rotationX="360" />
+        <Constraint
+            android:id="@+id/view_pager"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:scaleX="0.1" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint android:id="@id/widget" />
+    </ConstraintSet>
+
+    <Transition
+        app:autoTransition="animateToEnd"
+        app:constraintSetEnd="@+id/end"
+        app:constraintSetStart="@+id/start"
+        app:duration="1000">
+
+    </Transition>
+</MotionScene>
