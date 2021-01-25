@@ -6,13 +6,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.api.load
-import kotlinx.android.synthetic.main.fragment_mars.*
-
-class WeatherFragment : Fragment(R.layout.fragment_weather) {
+import kotlinx.android.synthetic.main.fragment_2.*
 
 
-    private val viewModel: PictureOfSame2DayViewModel by lazy {
-        ViewModelProvider(this).get(PictureOfSame2DayViewModel::class.java)
+class Fragment_2 : Fragment(R.layout.fragment_2) {
+    private val viewModel: PictureOfSameDayViewModel by lazy {
+        ViewModelProvider(this).get(PictureOfSameDayViewModel::class.java)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -31,7 +30,7 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
                 } else {
                     image_view.load(url) {
                         crossfade(true)
-                        lifecycle(this@WeatherFragment)
+                        lifecycle(this@Fragment_2)
                         error(R.drawable.ic_load_error_vector)
                         placeholder(R.drawable.ic_no_photo_vector)
                     }
@@ -52,6 +51,4 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
             show()
         }
     }
-
-
 }

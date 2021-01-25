@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.api.load
 import kotlinx.android.synthetic.main.fragment_pod.*
-import kotlinx.android.synthetic.main.main_fragment.*
+
 
 class PictureOfTheDayFragment : Fragment(R.layout.fragment_pod) {
 
