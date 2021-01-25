@@ -6,4 +6,8 @@
     <string name="favourite">favourite</string>
     <string name="settings">settings</string>
     <string name="search">Search</string>
+    <string name="chois_theme">Тема приложения</string>
+    <string name="theme1">Тема 1</string>
+    <string name="theme2">Тема 2</string>
+    <string name="theme3">Тема 3</string>
 </resources>
