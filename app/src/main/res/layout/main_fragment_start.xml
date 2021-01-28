@@ -17,8 +17,8 @@
             android:layout_height="match_parent"
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleGravity="top"
-            app:expandedTitleMarginStart="48dp"
             app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleMarginStart="48dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
@@ -37,10 +37,10 @@
 
     <androidx.constraintlayout.motion.widget.MotionLayout
 
-        app:layoutDescription="@xml/main_fragment_start_scene"
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layoutDescription="@xml/main_fragment_start_scene"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
@@ -61,6 +61,7 @@
         </androidx.viewpager.widget.ViewPager>
     </androidx.constraintlayout.motion.widget.MotionLayout>
 
+
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_app_bar"
         android:layout_width="match_parent"
@@ -68,7 +69,9 @@
         android:layout_gravity="bottom"
         app:backgroundTint="@color/colorPrimary"
         app:hideOnScroll="true"
-        app:layout_scrollFlags="scroll|enterAlways" />
+        app:layout_scrollFlags="scroll|enterAlways"
+
+        />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
