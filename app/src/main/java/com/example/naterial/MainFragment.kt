@@ -1,9 +1,12 @@
 package com.example.naterial
 
+import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.main_fragment_start.*
 
 
@@ -15,7 +18,31 @@ class MainFragment : Fragment(R.layout.main_fragment_start) {
         view_pager.adapter = ViewPagerAdapter(childFragmentManager)
         tab_layout.setupWithViewPager(view_pager)
         setBottomAppBar(view)
+        tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                tab?.position
+                SwitchTo(tab);
+            }
 
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+
+            }
+
+        })
+
+    }
+
+
+    private fun SwitchTo(tab: TabLayout.Tab?) {
+        val view = tab!!.view
+
+        ObjectAnimator.ofFloat(view, "scaleX", 0.5f, 1.5f, 0.8f, 1.2f, 1.1f).setDuration(1000).start()
+        ObjectAnimator.ofFloat(view, "scaleY", 0.5f, 1.5f, 1.1f).setDuration(500).start()
+        ObjectAnimator.ofFloat(view, "alpha", 0f, 1f).setDuration(1000).start()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -27,11 +54,7 @@ class MainFragment : Fragment(R.layout.main_fragment_start) {
         when (item.itemId) {
 
             R.id.app_bar_settings -> activity?.supportFragmentManager?.beginTransaction()?.add(R.id.container, SettingsFragment())?.addToBackStack(null)?.commit()
-            android.R.id.home -> {
-                activity?.let {
-                    //   BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
-                }
-            }
+
         }
         return super.onOptionsItemSelected(item)
     }
