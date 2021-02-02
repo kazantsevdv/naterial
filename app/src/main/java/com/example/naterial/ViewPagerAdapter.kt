@@ -10,7 +10,7 @@ private const val FRAGMENT_3 = 2
 private const val FRAGMENT_CALC = 3
 
 class ViewPagerAdapter(private val fragmentManager: FragmentManager) :
-        FragmentStatePagerAdapter(fragmentManager) {
+        FragmentStatePagerAdapter(fragmentManager,BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     private val fragments = arrayOf(PictureOfTheDayFragment(), Fragment_Recycler(), Fragment_3(), Fragment_calc())
 

@@ -1,14 +1,22 @@
 package com.example.naterial
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Typeface.BOLD
 import android.net.Uri
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.api.load
 import kotlinx.android.synthetic.main.fragment_pod.*
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 
 class PictureOfTheDayFragment : Fragment(R.layout.fragment_pod) {
@@ -21,7 +29,7 @@ class PictureOfTheDayFragment : Fragment(R.layout.fragment_pod) {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel.getData()
-                .observe(viewLifecycleOwner, { renderData(it) })
+            .observe(viewLifecycleOwner, { renderData(it) })
     }
 
 
@@ -50,7 +58,22 @@ class PictureOfTheDayFragment : Fragment(R.layout.fragment_pod) {
                         error(R.drawable.ic_load_error_vector)
                         placeholder(R.drawable.ic_no_photo_vector)
                     }
-                    description.text = serverResponseData.explanation
+
+                    val spannable = SpannableString(serverResponseData.explanation)
+                    val regEx = "(\\p{Lu})"
+                    val pattern: Pattern = Pattern.compile(regEx)
+                    val matcher: Matcher = pattern.matcher(serverResponseData.explanation)
+                    while (matcher.find()) {
+                        spannable.setSpan(
+                            ForegroundColorSpan(Color.RED),
+                            matcher.start(), matcher.end(),
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                        )
+                        spannable.setSpan(StyleSpan(BOLD), matcher.start(), matcher.end(),
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    }
+
+                    description.text = spannable
                 }
             }
             is PictureOfTheDayData.Loading -> {
